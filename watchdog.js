@@ -11,6 +11,50 @@ TaskSchema = new SimpleSchema({
     }
 })
 
+AssetSchema = new Asset({
+    "address.street": {
+        type: String
+    },
+    "address.subStreet": {
+        type: String
+    },
+    "address.country":{
+        type: String
+    },
+    "address.city":{
+        type: String
+    },
+    "address.zipCode": {
+        type: String
+    },
+    "picture": {
+        type: String
+    },
+    "createdAt": {
+        type: Date,
+        defaultValue: Date.now()
+    },
+    owner: {
+        type: String
+    },
+    manager: {
+        type: String
+    },
+    "size.sqft": {
+        type: Number
+    },
+    "size.sqm":{
+        type: Number
+    },
+    "year": {
+        type: Number
+    },
+    "notes": {
+        type: String
+    }
+
+})
+
 
 if (Meteor.isClient) {
     // counter starts at 0
@@ -52,10 +96,10 @@ if (Meteor.isClient) {
                 createdAt: new Date() // current time
             }
 
-            if(TaskSchema.namedContext("myContext").validate(taskToAdd)){
+            if (TaskSchema.namedContext("myContext").validate(taskToAdd)) {
                 Tasks.insert(taskToAdd);
             }
-            else{
+            else {
                 console.log("Error, task is not validated");
             }
 
@@ -73,6 +117,8 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
     Meteor.startup(function () {
+
+
         // code to run on server at startup
     });
 }

@@ -2,17 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e96b581c-2c3c-48e4-84a1-3bbd87f5a1aa" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watchdog.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/watchdog.css" afterPath="$PROJECT_DIR$/watchdog.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/watchdog.html" afterPath="$PROJECT_DIR$/watchdog.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/watchdog.js" afterPath="$PROJECT_DIR$/watchdog.js" />
     </list>
     <ignored path="watchdog.iws" />
@@ -40,9 +29,11 @@
       <file leaf-file-name="watchdog.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/watchdog.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.562701" vertical-offset="0" max-vertical-offset="1260">
-              <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
-              <folding />
+            <state vertical-scroll-proportion="0.5819936" vertical-offset="177" max-vertical-offset="1110">
+              <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+              <folding>
+                <element signature="e#866#2321#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -223,9 +214,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/watchdog.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.562701" vertical-offset="0" max-vertical-offset="1260">
-          <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
-          <folding />
+        <state vertical-scroll-proportion="0.5819936" vertical-offset="177" max-vertical-offset="1110">
+          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+          <folding>
+            <element signature="e#866#2321#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
