@@ -8,12 +8,14 @@
 <div class="container">
     {{> loginButtons}}
     <header> Assets</header>
-    <form class="new-asset">
-        <input type="text" name="owner" placeholder="owner" />
-        <input type="text" name="name" placeholder="Asset Name"/>
-        <input type="text" name="addressStreet" placeholder="address street"/>
-        <input type="submit" name="submit"/>
-    </form>
+    {{#if currentUser}}
+        <form class="new-asset">
+            <!--<input type="text" name="owner" value="{{currentUser.userId}}" />-->
+            <input type="text" name="name" placeholder="Asset Name"/>
+            <input type="text" name="addressStreet" placeholder="address street"/>
+            <input type="submit" name="submit"/>
+        </form>
+    {{/if}}
 </div>
 <div class="container">
     <h1>List of Assets</h1>

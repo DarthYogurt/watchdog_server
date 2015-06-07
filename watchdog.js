@@ -49,6 +49,7 @@ AssetSchema = new SimpleSchema({
 })
 
 if (Meteor.isClient) {
+
     Template.body.helpers({
         assets: function(){
             return Assets.find({});
@@ -59,14 +60,15 @@ if (Meteor.isClient) {
         "submit .new-asset": function (event) {
             var assetName = event.target.name.value;
             var addressStreet = event.target.addressStreet.value;
-            var owner = event.target.owner.value;
+            //var owner = event.target.owner.value;
+
 
             var newAsset = {
                 'name': assetName,
                 'address': {
                     'street': addressStreet
                 },
-                'owner': owner
+                'owner': Meteor.userId()
             };
 
             Assets.insert(newAsset);
@@ -77,23 +79,27 @@ if (Meteor.isClient) {
             return false;
         }
     })
-    Meteor.subscribe('assets', "bob");
+    Meteor.subscribe('assets');
+
+    Accounts.ui.config({
+        passwordSignupFields: "USERNAME_ONLY"
+    });
 }
 
 
 if (Meteor.isServer) {
     Meteor.startup(function () {
-        Meteor.publish("assets", function (owner) {
-            return Assets.find({owner: owner});
+
+        Meteor.publish("assets", function () {
+            return Assets.find({ owner: this.userId});
         });
+
     });
 }
 
 Meteor.methods({
     assetAdd: function(assetJson){
-        //    if (! Meteor.userId()) {
-        //        throw new Meteor.Error("not-authorized");
-        //    }
+
 
         if(AssetSchema.namedContext("myContext").validate(assetJson) ){
             Asset.insert(assetJson);
