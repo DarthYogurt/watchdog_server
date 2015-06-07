@@ -10,9 +10,11 @@
     <header> Assets</header>
     {{#if currentUser}}
         <form class="new-asset">
-            <!--<input type="text" name="owner" value="{{currentUser.userId}}" />-->
             <input type="text" name="name" placeholder="Asset Name"/>
-            <input type="text" name="addressStreet" placeholder="address street"/>
+            <input type="text" name="addressCountry" placeholder="country"/>
+            <input type="text" name="addressCity" placeholder="city" />
+            <input type="text" name="addressPostal" placeholder="postal"/>
+            <input type="text" name="addressStreet" placeholder="street"/>
             <input type="submit" name="submit"/>
         </form>
     {{/if}}
@@ -28,5 +30,5 @@
 </body>
 
 <template name="asset">
-    <li>{{owner}}, {{name}}, {{address.street}}</li>
+    <li> {{_id}} {{name}}, {{address.country}} {{address.city}} {{address.postal}} {{address.street}}</li>
 </template>

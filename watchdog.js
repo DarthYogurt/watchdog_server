@@ -4,47 +4,60 @@ Assets = new Mongo.Collection("assets");
 
 AssetSchema = new SimpleSchema({
     "name": {
-        type: String
+        type: String,
     },
     "address.street": {
-        type: String
+        type: String,
+        optional: true
+
     },
     "address.subStreet": {
-        type: String
+        type: String,
+        optional: true
     },
     "address.country": {
-        type: String
+        type: String,
+        optional: true
     },
     "address.city": {
-        type: String
+        type: String,
+        optional: true
     },
-    "address.zipCode": {
-        type: String
+    "address.postal": {
+        type: String,
+        optional: true
     },
     "picture": {
-        type: String
+        type: String,
+        optional: true
     },
     "createdAt": {
         type: Date,
-        defaultValue: Date.now()
+        defaultValue: Date.now(),
+        optional: true
     },
     owner: {
         type: String
     },
     manager: {
-        type: String
+        type: String,
+        optional: true
     },
     "size.sqft": {
-        type: Number
+        type: Number,
+        optional: true
     },
     "size.sqm": {
-        type: Number
+        type: Number,
+        optional: true
     },
     "year": {
-        type: Number
+        type: Number,
+        optional: true
     },
     "notes": {
-        type: String
+        type: String,
+        optional: true
     }
 })
 
@@ -59,6 +72,9 @@ if (Meteor.isClient) {
     Template.body.events({
         "submit .new-asset": function (event) {
             var assetName = event.target.name.value;
+            var country = event.target.addressCountry.value;
+            var city = event.target.addressCity.value;
+            var postal = event.target.addressPostal.value;
             var addressStreet = event.target.addressStreet.value;
             //var owner = event.target.owner.value;
 
@@ -66,16 +82,21 @@ if (Meteor.isClient) {
             var newAsset = {
                 'name': assetName,
                 'address': {
+                    'country': country,
+                    'city': city,
+                    'postal': postal,
                     'street': addressStreet
                 },
                 'owner': Meteor.userId()
             };
 
-            Assets.insert(newAsset);
-            //check(newAsset);
-            //if (AssetSchema.nameContext("myContext").validate(newAsset)) {
-            //    Assets.insert(newAsset);
-            //}
+            if (AssetSchema.namedContext("myContext").validate(newAsset)) {
+                Assets.insert(newAsset);
+            }
+            Tracker.autorun(function() {
+                var context = AssetSchema.namedContext("myContext");
+                console.log(context.invalidKeys());
+            });
             return false;
         }
     })
@@ -89,7 +110,6 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
     Meteor.startup(function () {
-
         Meteor.publish("assets", function () {
             return Assets.find({ owner: this.userId});
         });
@@ -99,15 +119,19 @@ if (Meteor.isServer) {
 
 Meteor.methods({
     assetAdd: function(assetJson){
-
-
-        if(AssetSchema.namedContext("myContext").validate(assetJson) ){
-            Asset.insert(assetJson);
+        if(AssetSchema.namedContext("assetAdd").validate(assetJson) ){
+            Assets.insert(assetJson);
         }
+        Tracker.autorun(function() {
+            var context = AssetSchema.namedContext("assetAdd");
+            console.log( context.invalidKeys() );
+        });
     },
     assetList: function(){
-
-        return Asset.find({});
+        return ( Assets.find({} ));
+    },
+    assetRemove: function(assetId){
+        Assets.remove({'_id': assetId});
     }
 })
 
