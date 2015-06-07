@@ -1,27 +1,21 @@
-Tasks = new Mongo.Collection("tasks");
-Asset = new Mongo.Collection("assets");
+Assets = new Mongo.Collection("assets");
 //SCHEMA
 
-TaskSchema = new SimpleSchema({
-    text: {
-        type: String
-    },
-    createdAt: {
-        type: Date
-    }
-})
 
 AssetSchema = new SimpleSchema({
+    "name": {
+        type: String
+    },
     "address.street": {
         type: String
     },
     "address.subStreet": {
         type: String
     },
-    "address.country":{
+    "address.country": {
         type: String
     },
-    "address.city":{
+    "address.city": {
         type: String
     },
     "address.zipCode": {
@@ -43,7 +37,7 @@ AssetSchema = new SimpleSchema({
     "size.sqft": {
         type: Number
     },
-    "size.sqm":{
+    "size.sqm": {
         type: Number
     },
     "year": {
@@ -54,80 +48,49 @@ AssetSchema = new SimpleSchema({
     }
 })
 
-
 if (Meteor.isClient) {
-    // counter starts at 0
-    Session.setDefault('counter', 0);
-
-    Template.hello.helpers({
-        counter: function () {
-            return Session.get('counter');
-        }
-    });
-
-    Template.hello.events({
-        'click button': function () {
-            // increment the counter when button is clicked
-            Session.set('counter', Session.get('counter') + 1);
-        }
-    });
-
     Template.body.helpers({
-        tasks: function () {
-            //Tasks.update({}, {'$set': {'random': Math.random()}, {'multi': true}});
-            return Tasks.find();
+        assets: function(){
+            return Assets.find({});
         }
-        //tasks: [
-        //    {text: "This is task 1"},
-        //    {text: "This is task 2"},
-        //    {text: "This is task 3"}
-        //]
-    });
+    })
 
     Template.body.events({
-        "submit .new-task": function (event) {
-            // This function is called when the new task form is submitted
+        "submit .new-asset": function (event) {
+            var assetName = event.target.name.value;
+            var addressStreet = event.target.addressStreet.value;
+            var owner = event.target.owner.value;
 
-            var text = event.target.text.value;
+            var newAsset = {
+                'name': assetName,
+                'address': {
+                    'street': addressStreet
+                },
+                'owner': owner
+            };
 
-            var taskToAdd = {
-                text: text,
-                createdAt: new Date() // current time
-            }
-
-            if (TaskSchema.namedContext("myContext").validate(taskToAdd)) {
-                Tasks.insert(taskToAdd);
-            }
-            else {
-                console.log("Error, task is not validated");
-            }
-
-            // Clear form
-            event.target.text.value = "";
-
-            // Prevent default form submit
+            Assets.insert(newAsset);
+            //check(newAsset);
+            //if (AssetSchema.nameContext("myContext").validate(newAsset)) {
+            //    Assets.insert(newAsset);
+            //}
             return false;
         }
-    });
-
-
+    })
+    Meteor.subscribe('assets', "bob");
 }
 
 
 if (Meteor.isServer) {
     Meteor.startup(function () {
-
-
-        // code to run on server at startup
+        Meteor.publish("assets", function (owner) {
+            return Assets.find({owner: owner});
+        });
     });
 }
 
-
-
-
 Meteor.methods({
-
-    addAsset: function(assetJson){
+    assetAdd: function(assetJson){
         //    if (! Meteor.userId()) {
         //        throw new Meteor.Error("not-authorized");
         //    }
@@ -135,24 +98,42 @@ Meteor.methods({
         if(AssetSchema.namedContext("myContext").validate(assetJson) ){
             Asset.insert(assetJson);
         }
+    },
+    assetList: function(){
+
+        return Asset.find({});
     }
-    //addTask: function (text) {
-    //    // Make sure the user is logged in before inserting a task
-    //    if (! Meteor.userId()) {
-    //        throw new Meteor.Error("not-authorized");
-    //    }
-    //
-    //    Tasks.insert({
-    //        text: text,
-    //        createdAt: new Date(),
-    //        owner: Meteor.userId(),
-    //        username: Meteor.user().username
-    //    });
-    //},
-    //deleteTask: function (taskId) {
-    //    Tasks.remove(taskId);
-    //},
-    //setChecked: function (taskId, setChecked) {
-    //    Tasks.update(taskId, { $set: { checked: setChecked} });
-    //}
-});
+})
+
+//
+//Meteor.methods({
+//
+//    addAsset: function(assetJson){
+//        //    if (! Meteor.userId()) {
+//        //        throw new Meteor.Error("not-authorized");
+//        //    }
+//
+//        if(AssetSchema.namedContext("myContext").validate(assetJson) ){
+//            Asset.insert(assetJson);
+//        }
+//    }
+//    //addTask: function (text) {
+//    //    // Make sure the user is logged in before inserting a task
+//    //    if (! Meteor.userId()) {
+//    //        throw new Meteor.Error("not-authorized");
+//    //    }
+//    //
+//    //    Tasks.insert({
+//    //        text: text,
+//    //        createdAt: new Date(),
+//    //        owner: Meteor.userId(),
+//    //        username: Meteor.user().username
+//    //    });
+//    //},
+//    //deleteTask: function (taskId) {
+//    //    Tasks.remove(taskId);
+//    //},
+//    //setChecked: function (taskId, setChecked) {
+//    //    Tasks.update(taskId, { $set: { checked: setChecked} });
+//    //}
+//});

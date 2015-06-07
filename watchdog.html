@@ -1,41 +1,30 @@
 <head>
-    <title>Todo List</title>
+    <title>WatchDog</title>
 
 </head>
 
 <body>
 
-<!--<div class="">-->
-    <!--<h1>Welcome to Meteor!</h1>-->
-
-    <!--{{> hello}}-->
-    <!--{{> hello}}-->
-<!--</div>-->
-
 <div class="container">
-    <header>
-        <h1>the Todo List</h1>
-    </header>
-    <form class="new-task">
-        <input type="text" name="text" placeholder="Type to add new tasks" />
+    {{> loginButtons}}
+    <header> Assets</header>
+    <form class="new-asset">
+        <input type="text" name="owner" placeholder="owner" />
+        <input type="text" name="name" placeholder="Asset Name"/>
+        <input type="text" name="addressStreet" placeholder="address street"/>
+        <input type="submit" name="submit"/>
     </form>
-
+</div>
+<div class="container">
+    <h1>List of Assets</h1>
     <ul>
-        {{#each tasks}}
-            {{> task}}
+        {{#each assets}}
+            {{> asset}}
         {{/each}}
     </ul>
 </div>
-
-
 </body>
 
-<template name="hello">
-    <button>Click Me</button>
-    <p>You've pressed the button {{counter}} times.</p>
-</template>
-
-
-<template name="task">
-    <li>{{text}}</li>
+<template name="asset">
+    <li>{{owner}}, {{name}}, {{address.street}}</li>
 </template>
