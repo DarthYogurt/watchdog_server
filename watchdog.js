@@ -11,7 +11,7 @@ TaskSchema = new SimpleSchema({
     }
 })
 
-AssetSchema = new Asset({
+AssetSchema = new SimpleSchema({
     "address.street": {
         type: String
     },
@@ -52,7 +52,6 @@ AssetSchema = new Asset({
     "notes": {
         type: String
     }
-
 })
 
 

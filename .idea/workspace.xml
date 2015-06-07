@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e96b581c-2c3c-48e4-84a1-3bbd87f5a1aa" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/watchdog.js" afterPath="$PROJECT_DIR$/watchdog.js" />
     </list>
     <ignored path="watchdog.iws" />
@@ -29,10 +31,10 @@
       <file leaf-file-name="watchdog.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/watchdog.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5819936" vertical-offset="177" max-vertical-offset="1110">
-              <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.85209006" vertical-offset="0" max-vertical-offset="1095">
+              <caret line="53" column="5" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
               <folding>
-                <element signature="e#866#2321#0" expanded="false" />
+                <element signature="e#872#2327#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -214,10 +216,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/watchdog.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5819936" vertical-offset="177" max-vertical-offset="1110">
-          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.85209006" vertical-offset="0" max-vertical-offset="1095">
+          <caret line="53" column="5" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
           <folding>
-            <element signature="e#866#2321#0" expanded="false" />
+            <element signature="e#872#2327#0" expanded="false" />
           </folding>
         </state>
       </provider>
