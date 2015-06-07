@@ -1,14 +1,41 @@
 <head>
-  <title>watchdog</title>
+    <title>Todo List</title>
+
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
+<!--<div class="">-->
+    <!--<h1>Welcome to Meteor!</h1>-->
+
+    <!--{{> hello}}-->
+    <!--{{> hello}}-->
+<!--</div>-->
+
+<div class="container">
+    <header>
+        <h1>the Todo List</h1>
+    </header>
+    <form class="new-task">
+        <input type="text" name="text" placeholder="Type to add new tasks" />
+    </form>
+
+    <ul>
+        {{#each tasks}}
+            {{> task}}
+        {{/each}}
+    </ul>
+</div>
+
+
 </body>
 
 <template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+    <button>Click Me</button>
+    <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+
+<template name="task">
+    <li>{{text}}</li>
 </template>
