@@ -1,5 +1,5 @@
 Tasks = new Mongo.Collection("tasks");
-
+Asset = new Mongo.Collection("assets");
 //SCHEMA
 
 TaskSchema = new SimpleSchema({
@@ -121,3 +121,38 @@ if (Meteor.isServer) {
         // code to run on server at startup
     });
 }
+
+
+
+
+Meteor.methods({
+
+    addAsset: function(assetJson){
+        //    if (! Meteor.userId()) {
+        //        throw new Meteor.Error("not-authorized");
+        //    }
+
+        if(AssetSchema.namedContext("myContext").validate(assetJson) ){
+            Asset.insert(assetJson);
+        }
+    }
+    //addTask: function (text) {
+    //    // Make sure the user is logged in before inserting a task
+    //    if (! Meteor.userId()) {
+    //        throw new Meteor.Error("not-authorized");
+    //    }
+    //
+    //    Tasks.insert({
+    //        text: text,
+    //        createdAt: new Date(),
+    //        owner: Meteor.userId(),
+    //        username: Meteor.user().username
+    //    });
+    //},
+    //deleteTask: function (taskId) {
+    //    Tasks.remove(taskId);
+    //},
+    //setChecked: function (taskId, setChecked) {
+    //    Tasks.update(taskId, { $set: { checked: setChecked} });
+    //}
+});
