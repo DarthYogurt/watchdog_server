@@ -70,20 +70,22 @@ if (Meteor.isClient) {
 
     Template.body.events({
         "submit .new-asset": function (event) {
-            var file = event.target.files[0]; //assuming 1 file only
-            if (!file) return;
-
-            var reader = new FileReader(); //create a reader according to HTML5 File API
-            var buffer = new Uint8Array(reader.result);
+            //console.log(event.target.pic);
+            //var file = event.target.pic; //assuming 1 file only
+            ////if (!file) return;
+            ////
+            //var reader = new FileReader(); //create a reader according to HTML5 File API
+            //var buffer = new Uint8Array(reader.result);
+            //console.log(buffer);
+            ////
+            ////reader.onload = function(event){
+            ////    // convert to binary
+            ////    Meteor.call('saveFile', buffer);
+            ////}
             //
-            //reader.onload = function(event){
-            //    // convert to binary
-            //    Meteor.call('saveFile', buffer);
-            //}
+            //reader.readAsArrayBuffer(file); //read the file as arraybuffer
 
-            reader.readAsArrayBuffer(file); //read the file as arraybuffer
-
-            var picture = buffer;
+            //var picture = buffer;
 
             var assetName = event.target.name.value;
             var country = event.target.addressCountry.value;
@@ -105,8 +107,8 @@ if (Meteor.isClient) {
                 'manager': manager,
                 'size': {
                     'sqft': Number(sqft)
-                },
-                'picture': [ picture ]
+                }
+                //'picture': [ picture ]
             };
 
             Meteor.call("assetAdd", newAsset);

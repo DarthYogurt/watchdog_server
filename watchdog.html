@@ -9,7 +9,7 @@
     {{> loginButtons}}
     <header> Assets</header>
     {{#if currentUser}}
-        <form class="new-asset">
+        <form class="new-asset" enctype="multipart/form-data" >
             <input type="text" name="name" placeholder="Asset Name"/>
             <input type="text" name="addressCountry" placeholder="country"/>
             <input type="text" name="addressCity" placeholder="city"/>
@@ -17,7 +17,7 @@
             <input type="text" name="addressStreet" placeholder="street"/>
             <input type="text" name="manager" placeholder="manager"/>
             <input type="number" name="sqft" placeholder="sqft"/>
-            <input type="file" name="fileField" />
+            <!--<input type="file" name="pic" accept="image/*" />-->
             <input type="submit" name="submit"/>
         </form>
     {{/if}}

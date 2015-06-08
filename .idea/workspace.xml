@@ -27,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="watchdog.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="watchdog.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/watchdog.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8344371" vertical-offset="1209" max-vertical-offset="2175">
-              <caret line="168" column="6" selection-start-line="168" selection-start-column="6" selection-end-line="168" selection-end-column="6" />
+            <state vertical-scroll-proportion="-12.222222" vertical-offset="435" max-vertical-offset="2205">
+              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
               <folding>
                 <element signature="e#97#126#0" expanded="false" />
                 <element signature="e#150#203#0" expanded="false" />
@@ -50,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="watchdog.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="watchdog.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/watchdog.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="795">
-              <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
+            <state vertical-scroll-proportion="0.51155114" vertical-offset="0" max-vertical-offset="909">
+              <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -69,8 +69,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/watchdog.css" />
-        <option value="$PROJECT_DIR$/watchdog.html" />
         <option value="$PROJECT_DIR$/watchdog.js" />
+        <option value="$PROJECT_DIR$/watchdog.html" />
       </list>
     </option>
   </component>
@@ -330,18 +330,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/watchdog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="795">
-          <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/watchdog.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8344371" vertical-offset="1209" max-vertical-offset="2175">
-          <caret line="168" column="6" selection-start-line="168" selection-start-column="6" selection-end-line="168" selection-end-column="6" />
+        <state vertical-scroll-proportion="-12.222222" vertical-offset="435" max-vertical-offset="2205">
+          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
           <folding>
             <element signature="e#97#126#0" expanded="false" />
             <element signature="e#150#203#0" expanded="false" />
@@ -356,6 +348,14 @@
             <element signature="e#1013#1065#0" expanded="false" />
             <element signature="e#1119#1200#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/watchdog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51155114" vertical-offset="0" max-vertical-offset="909">
+          <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
