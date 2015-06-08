@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e96b581c-2c3c-48e4-84a1-3bbd87f5a1aa" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/watchdog.html" afterPath="$PROJECT_DIR$/watchdog.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/watchdog.js" afterPath="$PROJECT_DIR$/watchdog.js" />
     </list>
@@ -27,21 +29,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="watchdog.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="watchdog.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/watchdog.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4949495" vertical-offset="1656" max-vertical-offset="2610">
-              <caret line="130" column="35" selection-start-line="130" selection-start-column="35" selection-end-line="130" selection-end-column="35" />
+            <state vertical-scroll-proportion="-27.777779" vertical-offset="615" max-vertical-offset="2235">
+              <caret line="91" column="40" selection-start-line="91" selection-start-column="40" selection-end-line="91" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="watchdog.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="watchdog.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/watchdog.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.0" vertical-offset="0" max-vertical-offset="600">
-              <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.92462313" vertical-offset="33" max-vertical-offset="705">
+              <caret line="39" column="57" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -66,8 +68,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/watchdog.css" />
-        <option value="$PROJECT_DIR$/watchdog.html" />
         <option value="$PROJECT_DIR$/watchdog.js" />
+        <option value="$PROJECT_DIR$/watchdog.html" />
       </list>
     </option>
   </component>
@@ -288,18 +290,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/watchdog.html">
+    <entry file="file://$PROJECT_DIR$/watchdog.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.0" vertical-offset="0" max-vertical-offset="600">
-          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+        <state vertical-scroll-proportion="-27.777779" vertical-offset="615" max-vertical-offset="2235">
+          <caret line="91" column="40" selection-start-line="91" selection-start-column="40" selection-end-line="91" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/watchdog.js">
+    <entry file="file://$PROJECT_DIR$/watchdog.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4949495" vertical-offset="1656" max-vertical-offset="2610">
-          <caret line="130" column="35" selection-start-line="130" selection-start-column="35" selection-end-line="130" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.92462313" vertical-offset="33" max-vertical-offset="705">
+          <caret line="39" column="57" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
           <folding />
         </state>
       </provider>

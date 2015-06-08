@@ -62,12 +62,11 @@ AssetSchema = new SimpleSchema({
 })
 
 if (Meteor.isClient) {
-
     Template.body.helpers({
         assets: function(){
             return Assets.find({});
         }
-    })
+    });
 
     Template.body.events({
         "submit .new-asset": function (event) {
@@ -76,8 +75,8 @@ if (Meteor.isClient) {
             var city = event.target.addressCity.value;
             var postal = event.target.addressPostal.value;
             var addressStreet = event.target.addressStreet.value;
-            //var owner = event.target.owner.value;
-
+            var manager = event.target.manager.value;
+            var sqft = event.target.sqft.value;
 
             var newAsset = {
                 'name': assetName,
@@ -87,23 +86,22 @@ if (Meteor.isClient) {
                     'postal': postal,
                     'street': addressStreet
                 },
-                'owner': Meteor.userId()
+                'owner': Meteor.userId(),
+                'manager': manager,
+                'size': {
+                    'sqft': Number(sqft)
+                }
             };
 
-            if (AssetSchema.namedContext("myContext").validate(newAsset)) {
-                Assets.insert(newAsset);
-            }
-            Tracker.autorun(function() {
-                var context = AssetSchema.namedContext("myContext");
-                console.log(context.invalidKeys());
-            });
+            Meteor.call("assetAdd", newAsset);
             return false;
         }
-    })
+    });
+
     Meteor.subscribe('assets');
 
     Accounts.ui.config({
-        passwordSignupFields: "USERNAME_ONLY"
+        passwordSignupFields: "USERNAME_AND_OPTIONAL_EMAIL"
     });
 }
 
@@ -119,6 +117,9 @@ if (Meteor.isServer) {
 
 Meteor.methods({
     assetAdd: function(assetJson){
+        if (! Meteor.userId()) {
+            throw new Meteor.Error("not-authorized");
+        }
         if(AssetSchema.namedContext("assetAdd").validate(assetJson) ){
             Assets.insert(assetJson);
         }
@@ -128,42 +129,15 @@ Meteor.methods({
         });
     },
     assetList: function(){
+        if (! Meteor.userId()) {
+            throw new Meteor.Error("not-authorized");
+        }
         return ( Assets.find({} ));
     },
     assetRemove: function(assetId){
+        if (! Meteor.userId()) {
+            throw new Meteor.Error("not-authorized");
+        }
         Assets.remove({'_id': assetId});
     }
 })
-
-//
-//Meteor.methods({
-//
-//    addAsset: function(assetJson){
-//        //    if (! Meteor.userId()) {
-//        //        throw new Meteor.Error("not-authorized");
-//        //    }
-//
-//        if(AssetSchema.namedContext("myContext").validate(assetJson) ){
-//            Asset.insert(assetJson);
-//        }
-//    }
-//    //addTask: function (text) {
-//    //    // Make sure the user is logged in before inserting a task
-//    //    if (! Meteor.userId()) {
-//    //        throw new Meteor.Error("not-authorized");
-//    //    }
-//    //
-//    //    Tasks.insert({
-//    //        text: text,
-//    //        createdAt: new Date(),
-//    //        owner: Meteor.userId(),
-//    //        username: Meteor.user().username
-//    //    });
-//    //},
-//    //deleteTask: function (taskId) {
-//    //    Tasks.remove(taskId);
-//    //},
-//    //setChecked: function (taskId, setChecked) {
-//    //    Tasks.update(taskId, { $set: { checked: setChecked} });
-//    //}
-//});

@@ -9,3 +9,5 @@ insecure
 aldeed:simple-schema
 accounts-ui
 accounts-password
+accounts-facebook
+accounts-github

@@ -12,23 +12,30 @@
         <form class="new-asset">
             <input type="text" name="name" placeholder="Asset Name"/>
             <input type="text" name="addressCountry" placeholder="country"/>
-            <input type="text" name="addressCity" placeholder="city" />
+            <input type="text" name="addressCity" placeholder="city"/>
             <input type="text" name="addressPostal" placeholder="postal"/>
             <input type="text" name="addressStreet" placeholder="street"/>
+            <input type="text" name="manager" placeholder="manager"/>
+            <input type="number" name="sqft" placeholder="sqft"/>
             <input type="submit" name="submit"/>
         </form>
     {{/if}}
 </div>
 <div class="container">
     <h1>List of Assets</h1>
-    <ul>
-        {{#each assets}}
-            {{> asset}}
-        {{/each}}
-    </ul>
+
+    <form>
+        <ul>
+            {{#each assets}}
+                {{> asset}}
+            {{/each}}
+        </ul>
+    </form>
 </div>
 </body>
 
 <template name="asset">
-    <li> {{_id}} {{name}}, {{address.country}} {{address.city}} {{address.postal}} {{address.street}}</li>
+    <li> {{_id}} {{name}}
+        , {{manager}} {{address.country}} {{address.city}} {{address.postal}} {{address.street}} {{sqft}}</li>
+    <input type="submit" name="removeAsset" value="Delete"/>
 </template>
