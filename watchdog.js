@@ -95,6 +95,9 @@ if (Meteor.isClient) {
 
             Meteor.call("assetAdd", newAsset);
             return false;
+        },
+        "submit .remove-asset": function(event){
+            return false;
         }
     });
 

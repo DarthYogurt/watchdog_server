@@ -24,9 +24,10 @@
 <div class="container">
     <h1>List of Assets</h1>
 
-    <form>
+    <form class="remove-asset">
         <ul>
             {{#each assets}}
+
                 {{> asset}}
             {{/each}}
         </ul>
@@ -35,7 +36,10 @@
 </body>
 
 <template name="asset">
-    <li> {{_id}} {{name}}
-        , {{manager}} {{address.country}} {{address.city}} {{address.postal}} {{address.street}} {{sqft}}</li>
-    <input type="submit" name="removeAsset" value="Delete"/>
+    <li>
+        <input type="submit" name="submit"  value="{{_id}}"/>
+        {{_id}} {{name}} {{manager}} {{address.country}} {{address.city}} {{address.postal}} {{address.street}} {{sqft}}
+
+    </li>
+
 </template>
