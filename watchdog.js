@@ -1,4 +1,5 @@
 Assets = new Mongo.Collection("assets");
+Files = new Mongo.Collection('files');
 //SCHEMA
 
 
@@ -27,8 +28,8 @@ AssetSchema = new SimpleSchema({
         type: String,
         optional: true
     },
-    "picture.$": {
-        type: String,
+    "picture": {
+        type: [Object],
         optional: true
     },
     "createdAt": {
@@ -70,22 +71,24 @@ if (Meteor.isClient) {
 
     Template.body.events({
         "submit .new-asset": function (event) {
-            //console.log(event.target.pic);
-            //var file = event.target.pic; //assuming 1 file only
+            //console.log(event.target.picture.value);
+            //var file = event.target.picture.value; //assuming 1 file only
             ////if (!file) return;
-            ////
-            //var reader = new FileReader(); //create a reader according to HTML5 File API
-            //var buffer = new Uint8Array(reader.result);
-            //console.log(buffer);
-            ////
-            ////reader.onload = function(event){
-            ////    // convert to binary
-            ////    Meteor.call('saveFile', buffer);
-            ////}
+            //console.log(file);
+            //var reader = new FileReader();
             //
+            //reader.onload = function(event){
+            //    var buffer = new Uint8Array(reader.result); // convert to binary
+            //    console.log(buffer);
+            //
+            //    //Meteor.call('saveFile', buffer);
+            //}
+
+
+
             //reader.readAsArrayBuffer(file); //read the file as arraybuffer
 
-            //var picture = buffer;
+            //var picture = "12311223123211";
 
             var assetName = event.target.name.value;
             var country = event.target.addressCountry.value;
@@ -107,8 +110,8 @@ if (Meteor.isClient) {
                 'manager': manager,
                 'size': {
                     'sqft': Number(sqft)
-                }
-                //'picture': [ picture ]
+                },
+                //'picture': [picture]
             };
 
             Meteor.call("assetAdd", newAsset);
@@ -174,5 +177,8 @@ Meteor.methods({
             throw new Meteor.Error("not-authorized");
         }
         Assets.update({ '_id': assetId }, { '$push': { 'picture': buffer }});
+    },
+    'saveFile': function(buffer){
+        Files.insert({data:buffer})
     }
 })
