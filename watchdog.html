@@ -17,6 +17,7 @@
             <input type="text" name="addressStreet" placeholder="street"/>
             <input type="text" name="manager" placeholder="manager"/>
             <input type="number" name="sqft" placeholder="sqft"/>
+            <input type="file" name="fileField" />
             <input type="submit" name="submit"/>
         </form>
     {{/if}}
@@ -39,6 +40,7 @@
     <li>
         <button class="delete">&times;</button>
         {{name}} {{manager}} {{address.country}} {{address.city}} {{address.postal}} {{address.street}} {{sqft}}
+        <!--<button class="uploadpic">upload pic</button>-->
 
     </li>
 

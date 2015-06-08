@@ -27,7 +27,7 @@ AssetSchema = new SimpleSchema({
         type: String,
         optional: true
     },
-    "picture": {
+    "picture.$": {
         type: String,
         optional: true
     },
@@ -70,6 +70,21 @@ if (Meteor.isClient) {
 
     Template.body.events({
         "submit .new-asset": function (event) {
+            var file = event.target.files[0]; //assuming 1 file only
+            if (!file) return;
+
+            var reader = new FileReader(); //create a reader according to HTML5 File API
+            var buffer = new Uint8Array(reader.result);
+            //
+            //reader.onload = function(event){
+            //    // convert to binary
+            //    Meteor.call('saveFile', buffer);
+            //}
+
+            reader.readAsArrayBuffer(file); //read the file as arraybuffer
+
+            var picture = buffer;
+
             var assetName = event.target.name.value;
             var country = event.target.addressCountry.value;
             var city = event.target.addressCity.value;
@@ -90,7 +105,8 @@ if (Meteor.isClient) {
                 'manager': manager,
                 'size': {
                     'sqft': Number(sqft)
-                }
+                },
+                'picture': [ picture ]
             };
 
             Meteor.call("assetAdd", newAsset);
@@ -100,6 +116,13 @@ if (Meteor.isClient) {
             Meteor.call("assetRemove", this._id);
             return false;
         }
+        //"click .uploadpic": function(event){
+        //    console.log(this._id);
+        //
+        //
+        //
+        //    return false;
+        //}
     });
 
     Meteor.subscribe('assets');
@@ -143,5 +166,11 @@ Meteor.methods({
             throw new Meteor.Error("not-authorized");
         }
         Assets.remove({'_id': assetId});
+    },
+    addPic: function(buffer, assetId){
+        if (! Meteor.userId()) {
+            throw new Meteor.Error("not-authorized");
+        }
+        Assets.update({ '_id': assetId }, { '$push': { 'picture': buffer }});
     }
 })
