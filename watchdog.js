@@ -37,10 +37,10 @@ AssetSchema = new SimpleSchema({
         defaultValue: Date.now(),
         optional: true
     },
-    owner: {
+    "owner": {
         type: String
     },
-    manager: {
+    "manager": {
         type: String,
         optional: true
     },
@@ -60,6 +60,62 @@ AssetSchema = new SimpleSchema({
         type: String,
         optional: true
     }
+})
+
+
+AddressSchema = new SimpleSchema({
+    "name": {
+        type: String,
+    },
+    "address.country": {
+        type: String,
+        optional: true
+    },
+    "address.city": {
+        type: String,
+        optional: true
+    },
+    "address.postal": {
+        type: String,
+        optional: true
+    },
+    "address.street": {
+        type: String,
+        optional: true
+    },
+    "address.subStreet": {
+        type: String,
+        optional: true
+    }
+});
+
+newAssetSchema = new SimpleSchema({
+
+    "desc":{
+        type: AddressSchema
+    },
+    "desc.year": {
+        type: Number,
+        optional: true
+    },
+
+
+    //
+    //"leaseHistory.expire": {
+    //    "type": Date,
+    //    "optional": true
+    //},
+    //
+    //"createdAt": {
+    //    type: Date,
+    //    defaultValue: Date.now(),
+    //    optional: true
+    //},
+    //
+    //"notes": {
+    //    type: String,
+    //    optional: true
+    //}
 })
 
 if (Meteor.isClient) {
