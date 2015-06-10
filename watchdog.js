@@ -64,14 +64,15 @@ AssetSchema = new SimpleSchema({
 
 
 AddressSchema = new SimpleSchema({
-    "name": {
-        type: String,
-    },
     "address.country": {
         type: String,
         optional: true
     },
     "address.city": {
+        type: String,
+        optional: true
+    },
+    "address.district":{
         type: String,
         optional: true
     },
@@ -90,7 +91,9 @@ AddressSchema = new SimpleSchema({
 });
 
 newAssetSchema = new SimpleSchema({
-
+    "name": {
+        type: String,
+    },
     "desc":{
         type: AddressSchema
     },
@@ -98,24 +101,7 @@ newAssetSchema = new SimpleSchema({
         type: Number,
         optional: true
     },
-
-
-    //
-    //"leaseHistory.expire": {
-    //    "type": Date,
-    //    "optional": true
-    //},
-    //
-    //"createdAt": {
-    //    type: Date,
-    //    defaultValue: Date.now(),
-    //    optional: true
-    //},
-    //
-    //"notes": {
-    //    type: String,
-    //    optional: true
-    //}
+    
 })
 
 if (Meteor.isClient) {
@@ -127,24 +113,6 @@ if (Meteor.isClient) {
 
     Template.body.events({
         "submit .new-asset": function (event) {
-            //console.log(event.target.picture.value);
-            //var file = event.target.picture.value; //assuming 1 file only
-            ////if (!file) return;
-            //console.log(file);
-            //var reader = new FileReader();
-            //
-            //reader.onload = function(event){
-            //    var buffer = new Uint8Array(reader.result); // convert to binary
-            //    console.log(buffer);
-            //
-            //    //Meteor.call('saveFile', buffer);
-            //}
-
-
-
-            //reader.readAsArrayBuffer(file); //read the file as arraybuffer
-
-            //var picture = "12311223123211";
 
             var assetName = event.target.name.value;
             var country = event.target.addressCountry.value;
