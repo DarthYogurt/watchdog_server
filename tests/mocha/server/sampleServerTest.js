@@ -5,5 +5,6 @@ if (!(typeof MochaWeb === 'undefined')){
         chai.assert(Meteor.release);
       });
     });
+
   });
 }

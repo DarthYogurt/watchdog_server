@@ -10,11 +10,13 @@
     <header> Assets</header>
     {{#if currentUser}}
         <form class="new-asset" enctype="multipart/form-data" >
+            Description <br>
             <input type="text" name="name" placeholder="Asset Name"/>
             <input type="text" name="addressCountry" placeholder="country"/>
             <input type="text" name="addressCity" placeholder="city"/>
             <input type="text" name="addressPostal" placeholder="postal"/>
             <input type="text" name="addressStreet" placeholder="street"/>
+            <input type="text" name="year" placeholder="year"/>
             <input type="text" name="manager" placeholder="manager"/>
             <input type="number" name="sqft" placeholder="sqft"/>
             <input type="file" name="picture" />
@@ -39,7 +41,7 @@
 <template name="asset">
     <li>
         <button class="delete">&times;</button>
-        {{name}} {{manager}} {{address.country}} {{address.city}} {{address.postal}} {{address.street}} {{sqft}}
+        {{name}} {{manager}} {{desc.country}} {{desc.city}} {{desc.postal}} {{desc.street}} {{desc.sqft}} {{desc.year}}
         <!--<button class="uploadpic">upload pic</button>-->
 
     </li>
