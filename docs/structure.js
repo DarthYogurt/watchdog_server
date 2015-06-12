@@ -51,7 +51,9 @@ Person = {
 	'userId': '1535132sdfa32',
 	'name': 'Jon Stewart',
 	'email': 'jStu@dailyshow.com',
-	'currency': 'EUR',
+	'preferences': { 
+		'currency': 'EUR',
+	},
 	'role': [
 		'property manager',
 		'owner',

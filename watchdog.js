@@ -28,6 +28,27 @@ AddressSchema = new SimpleSchema({
     }
 });
 
+//PersonSchema = new SimpleSchema({
+//    'userId': {
+//        type: String
+//    },
+//    'name': {
+//        type: String
+//    },
+//    'email': {
+//        type: String,
+//        optional: true
+//    },
+//    'preferences.currency': {
+//        type: String,
+//        optional: true
+//    },
+//    'role': {
+//        type: [String],
+//        optional: true
+//    }
+//})
+
 AssetSchema = new SimpleSchema({
     "name": {
         type: String,
@@ -45,11 +66,55 @@ AssetSchema = new SimpleSchema({
         optional: true
     },
     "owner": {
-        type: [ String ],
+        type: [String],
         optional: true
     },
     "manager": {
-        type: [ String ],
+        type: [String],
+        optional: true
+    },
+    'lease': {
+        type: [Object],
+        optional: true
+    },
+    'lease.$.leasee': {
+        type: [Object],
+        optional: true
+    },
+    'lease.leasee.userId': {
+        type: String,
+        optional: true
+    },
+    'lease.leasee.start': {
+        type: Date,
+        optional: true
+    },
+    'lease.leasee.end': {
+        type: Date,
+        optional: true
+    },
+    'lease.expire': {
+        type: Date,
+        optional: true
+    },
+    'lease.estimatedRateIncrease': {
+        type: Number,
+        optional: true
+    },
+    'lease.dueDate': {
+        type: Number,
+        optional: true
+    },
+    'deposit': {
+        type: Object,
+        optional: true
+    },
+    'deposit.bank': {
+        type: String,
+        optional: true
+    },
+    'deposit.description': {
+        type: String,
         optional: true
     }
 })
@@ -74,6 +139,14 @@ if (Meteor.isClient) {
             var sqm = Number(event.target.sqm.value);
             var manager = event.target.manager.value;
             var owner = event.target.owner.value;
+            var leaseeId = event.target.leaseLeasee.value;
+            var leaseeStart = event.target.leaseeLeaseStart.value;
+            var leaseeeEnd = event.target.leaseeeleaseEnd.value;
+
+            var leaseExpire = event.target.leaseExpire.value;
+            var leasePercentIncrease = event.target.leasePercentIncrease.value;
+            var dueDate = event.target.leaseDueDate.value;
+
 
             var newAsset = {
                 'name': assetName,
@@ -86,8 +159,27 @@ if (Meteor.isClient) {
                     'year': year,
                     'sqm': sqm
                 },
-                'owner': [ owner ],
-                'manager': [ manager ]
+                'owner': [owner],
+                'manager': [manager],
+
+                'lease': {
+                    'leasee': [
+                        {
+                            'userId': leaseeId,
+                            'start': leaseeStart,
+                            'end': leaseeeEnd
+                        }
+                    ],
+                    'expire': leaseExpire,
+                    'estimatedPercentIncrease': leasePercentIncrease,
+                    'dueDate': dueDate
+                },
+                'deposit': {
+                    'bank': 'China Construction Bank',
+                    'description': 'Personal Bank Account USA'
+                }
+
+
             };
             Meteor.call("assetAdd", newAsset);
             return false;
