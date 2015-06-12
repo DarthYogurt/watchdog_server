@@ -101,6 +101,10 @@ AssetSchema = new SimpleSchema({
     "desc.year": {
         type: Number,
         optional: true
+    },
+    "desc.sqm": {
+        type: Number,
+        optional: true
     }
 })
 
@@ -118,10 +122,12 @@ if (Meteor.isClient) {
             var country = event.target.addressCountry.value;
             var city = event.target.addressCity.value;
             var postal = event.target.addressPostal.value;
-            var addressStreet = event.target.addressStreet.value;
+            var street = event.target.addressStreet.value;
+            var subStreet = event.target.addressSubStreet.value;
             var year = Number(event.target.year.value);
+            var sqm = Number(event.target.sqm.value);
             var manager = event.target.manager.value;
-            var sqft = event.target.sqft.value;
+            var owner = event.target.owner.value;
 
             var newAsset = {
                 'name': assetName,
@@ -129,9 +135,17 @@ if (Meteor.isClient) {
                     'country': country,
                     'city': city,
                     'postal': postal,
-                    'street': addressStreet,
-                    'year': year
+                    'street': street,
+                    'subStreet:': subStreet,
+                    'year': year,
+                    'sqm': sqm
+                },
+                'people': {
+                    'owner': [ owner ],
+                    'manager': [ manager ]
                 }
+
+
 
                 //'owner': Meteor.userId(),
                 //'manager': manager,
