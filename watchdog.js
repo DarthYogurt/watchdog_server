@@ -1,67 +1,5 @@
 Assets = new Mongo.Collection("assets");
 Files = new Mongo.Collection('files');
-//SCHEMA
-
-
-//AssetSchema = new SimpleSchema({
-//    "name": {
-//        type: String,
-//    },
-//    "address.street": {
-//        type: String,
-//        optional: true
-//
-//    },
-//    "address.subStreet": {
-//        type: String,
-//        optional: true
-//    },
-//    "address.country": {
-//        type: String,
-//        optional: true
-//    },
-//    "address.city": {
-//        type: String,
-//        optional: true
-//    },
-//    "address.postal": {
-//        type: String,
-//        optional: true
-//    },
-//    "picture": {
-//        type: [Object],
-//        optional: true
-//    },
-//    "createdAt": {
-//        type: Date,
-//        defaultValue: Date.now(),
-//        optional: true
-//    },
-//    "owner": {
-//        type: String
-//    },
-//    "manager": {
-//        type: String,
-//        optional: true
-//    },
-//    "size.sqft": {
-//        type: Number,
-//        optional: true
-//    },
-//    "size.sqm": {
-//        type: Number,
-//        optional: true
-//    },
-//    "year": {
-//        type: Number,
-//        optional: true
-//    },
-//    "notes": {
-//        type: String,
-//        optional: true
-//    }
-//})
-
 
 AddressSchema = new SimpleSchema({
     "country": {
@@ -84,7 +22,7 @@ AddressSchema = new SimpleSchema({
         type: String,
         optional: true
     },
-    "subStreet": {
+    "substreet": {
         type: String,
         optional: true
     }
@@ -105,6 +43,14 @@ AssetSchema = new SimpleSchema({
     "desc.sqm": {
         type: Number,
         optional: true
+    },
+    "owner": {
+        type: [ String ],
+        optional: true
+    },
+    "manager": {
+        type: [ String ],
+        optional: true
     }
 })
 
@@ -123,7 +69,7 @@ if (Meteor.isClient) {
             var city = event.target.addressCity.value;
             var postal = event.target.addressPostal.value;
             var street = event.target.addressStreet.value;
-            var subStreet = event.target.addressSubStreet.value;
+            var substreet = event.target.addressSubStreet.value;
             var year = Number(event.target.year.value);
             var sqm = Number(event.target.sqm.value);
             var manager = event.target.manager.value;
@@ -136,23 +82,13 @@ if (Meteor.isClient) {
                     'city': city,
                     'postal': postal,
                     'street': street,
-                    'subStreet:': subStreet,
+                    'substreet': substreet,
                     'year': year,
                     'sqm': sqm
                 },
-                'people': {
-                    'owner': [ owner ],
-                    'manager': [ manager ]
-                }
-
-
-
-                //'owner': Meteor.userId(),
-                //'manager': manager,
-                //'size': {
-                //    'sqft': Number(sqft)
-                //},
-            }
+                'owner': [ owner ],
+                'manager': [ manager ]
+            };
             Meteor.call("assetAdd", newAsset);
             return false;
         },
