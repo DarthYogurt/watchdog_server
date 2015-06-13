@@ -74,37 +74,37 @@ AssetSchema = new SimpleSchema({
         optional: true
     },
     'lease': {
-        type: [Object],
+        type: Object ,
         optional: true
     },
-    'lease.$.leasee': {
-        type: [Object],
+    'lease.leasee': {
+        type: [ Object ],
         optional: true
     },
-    'lease.leasee.userId': {
+    'lease.leasee.$.userId': {
         type: String,
         optional: true
     },
-    'lease.leasee.start': {
-        type: Date,
-        optional: true
-    },
-    'lease.leasee.end': {
-        type: Date,
-        optional: true
-    },
-    'lease.expire': {
-        type: Date,
-        optional: true
-    },
-    'lease.estimatedRateIncrease': {
-        type: Number,
-        optional: true
-    },
-    'lease.dueDate': {
-        type: Number,
-        optional: true
-    },
+    //'lease.leasee.$.start': {
+    //    type: Date,
+    //    optional: true
+    //},
+    //'lease.leasee.$.end': {
+    //    type: Date,
+    //    optional: true
+    //},
+    //'lease.expire': {
+    //    type: Date,
+    //    optional: true
+    //},
+    //'lease.estimatedRateIncrease': {
+    //    type: Number,
+    //    optional: true
+    //},
+    //'lease.dueDate': {
+    //    type: Number,
+    //    optional: true
+    //},
     'deposit': {
         type: Object,
         optional: true
@@ -117,7 +117,7 @@ AssetSchema = new SimpleSchema({
         type: String,
         optional: true
     }
-})
+});
 
 if (Meteor.isClient) {
     Template.body.helpers({
@@ -147,7 +147,6 @@ if (Meteor.isClient) {
             var leasePercentIncrease = event.target.leasePercentIncrease.value;
             var dueDate = event.target.leaseDueDate.value;
 
-
             var newAsset = {
                 'name': assetName,
                 'desc': {
@@ -166,18 +165,18 @@ if (Meteor.isClient) {
                     'leasee': [
                         {
                             'userId': leaseeId,
-                            'start': leaseeStart,
-                            'end': leaseeeEnd
+                            //'start': leaseeStart,
+                            //'end': leaseeeEnd
                         }
                     ],
-                    'expire': leaseExpire,
-                    'estimatedPercentIncrease': leasePercentIncrease,
-                    'dueDate': dueDate
+                //    'expire': leaseExpire,
+                //    'estimatedPercentIncrease': leasePercentIncrease,
+                //    'dueDate': dueDate
                 },
-                'deposit': {
-                    'bank': 'China Construction Bank',
-                    'description': 'Personal Bank Account USA'
-                }
+                //'deposit': {
+                //    'bank': 'China Construction Bank',
+                //    'description': 'Personal Bank Account USA'
+                //}
 
 
             };
@@ -244,5 +243,9 @@ Meteor.methods({
     },
     'saveFile': function (buffer) {
         Files.insert({data: buffer})
+    },
+
+    'test': function(){
+        console.log(Meteor.user());
     }
 })

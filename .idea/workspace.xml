@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e96b581c-2c3c-48e4-84a1-3bbd87f5a1aa" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/watchdog.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/structure.js" afterPath="$PROJECT_DIR$/docs/structure.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/watchdog.html" afterPath="$PROJECT_DIR$/watchdog.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/watchdog.js" afterPath="$PROJECT_DIR$/watchdog.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="watchdog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,8 +39,8 @@
       <file leaf-file-name="watchdog.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/watchdog.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5906902" vertical-offset="2812" max-vertical-offset="3435">
-              <caret line="237" column="6" selection-start-line="237" selection-start-column="6" selection-end-line="237" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.56661314" vertical-offset="2782" max-vertical-offset="3480">
+              <caret line="234" column="9" selection-start-line="234" selection-start-column="9" selection-end-line="234" selection-end-column="9" />
               <folding>
                 <element signature="e#114#528#0" expanded="false" />
               </folding>
@@ -214,6 +210,9 @@
       <method />
     </configuration>
     <configuration default="false" name="watchdog-dev" type="meteor-app-runner" factoryName="Meteor">
+      <option name="envs">
+        <entry key="DP_DEFAULT_CONNECTION_URL" value="http://10..0.1.158:3030" />
+      </option>
       <option name="exePath" value="/usr/local/bin/meteor" />
       <option name="name" value="watchdog-dev" />
       <option name="startBrowserSettings">
@@ -275,7 +274,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="683" y="23" width="683" height="741" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -285,7 +284,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26586103" sideWeight="0.49922958" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3990755" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.48844376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="23" width="683" height="741" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.48844376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="23" width="683" height="741" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24981412" sideWeight="0.5007704" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -462,8 +461,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/watchdog.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5906902" vertical-offset="2812" max-vertical-offset="3435">
-          <caret line="237" column="6" selection-start-line="237" selection-start-column="6" selection-end-line="237" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.56661314" vertical-offset="2782" max-vertical-offset="3480">
+          <caret line="234" column="9" selection-start-line="234" selection-start-column="9" selection-end-line="234" selection-end-column="9" />
           <folding>
             <element signature="e#114#528#0" expanded="false" />
           </folding>
