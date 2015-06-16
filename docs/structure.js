@@ -47,7 +47,7 @@ Cashflow = {
 	'time': "2004/1/21:16:00Z00"
 }
 
-Person = {
+User = {
 	'userId': '1535132sdfa32',
 	'name': 'Jon Stewart',
 	'email': 'jStu@dailyshow.com',
@@ -67,5 +67,6 @@ Person = {
 Notes = {
 	'assetId': 'asf123dsfw23tger23',
 	'category': 'issues',
-	'text': "Problem with sink, couldn't be fixed with the existing tools"
+	'text': "Problem with sink, couldn't be fixed with the existing tools",
+	'time': '2016-5-5 24:21'
 }

@@ -28,26 +28,27 @@ AddressSchema = new SimpleSchema({
     }
 });
 
-//PersonSchema = new SimpleSchema({
-//    'userId': {
-//        type: String
-//    },
-//    'name': {
-//        type: String
-//    },
-//    'email': {
-//        type: String,
-//        optional: true
-//    },
-//    'preferences.currency': {
-//        type: String,
-//        optional: true
-//    },
-//    'role': {
-//        type: [String],
-//        optional: true
-//    }
-//})
+UserProfile = new SimpleSchema({
+    'userId': {
+        type: String
+    },
+    'name': {
+        type: String
+    },
+    'email': {
+        type: String,
+        optional: true
+    },
+    'preferences.currency': {
+        type: String,
+        optional: true
+    },
+    'role': {
+        type: [String],
+        optional: true
+    }
+})
+//Meteor.users.attachSchema(UserProfile);
 
 AssetSchema = new SimpleSchema({
     "name": {
@@ -85,26 +86,26 @@ AssetSchema = new SimpleSchema({
         type: String,
         optional: true
     },
-    //'lease.leasee.$.start': {
-    //    type: Date,
-    //    optional: true
-    //},
-    //'lease.leasee.$.end': {
-    //    type: Date,
-    //    optional: true
-    //},
-    //'lease.expire': {
-    //    type: Date,
-    //    optional: true
-    //},
-    //'lease.estimatedRateIncrease': {
-    //    type: Number,
-    //    optional: true
-    //},
-    //'lease.dueDate': {
-    //    type: Number,
-    //    optional: true
-    //},
+    'lease.leasee.$.start': {
+        type: Date,
+        optional: true
+    },
+    'lease.leasee.$.end': {
+        type: Date,
+        optional: true
+    },
+    'lease.expire': {
+        type: Date,
+        optional: true
+    },
+    'lease.percentIncrease': {
+        type: Number,
+        optional: true
+    },
+    'lease.dueDate': {
+        type: Number,
+        optional: true
+    },
     'deposit': {
         type: Object,
         optional: true
@@ -140,12 +141,12 @@ if (Meteor.isClient) {
             var manager = event.target.manager.value;
             var owner = event.target.owner.value;
             var leaseeId = event.target.leaseLeasee.value;
-            var leaseeStart = event.target.leaseeLeaseStart.value;
-            var leaseeeEnd = event.target.leaseeeleaseEnd.value;
+            var leaseeStart = new Date(event.target.leaseeLeaseStart.value);
+            var leaseeeEnd = new Date(event.target.leaseeeleaseEnd.value);
 
-            var leaseExpire = event.target.leaseExpire.value;
-            var leasePercentIncrease = event.target.leasePercentIncrease.value;
-            var dueDate = event.target.leaseDueDate.value;
+            var leaseExpire = new Date(event.target.leaseExpire.value);
+            var leasePercentIncrease = Number(event.target.leasePercentIncrease.value);
+            var dueDate = Number(event.target.leaseDueDate.value);
 
             var newAsset = {
                 'name': assetName,
@@ -165,18 +166,18 @@ if (Meteor.isClient) {
                     'leasee': [
                         {
                             'userId': leaseeId,
-                            //'start': leaseeStart,
-                            //'end': leaseeeEnd
+                            'start': leaseeStart,
+                            'end': leaseeeEnd
                         }
                     ],
-                //    'expire': leaseExpire,
-                //    'estimatedPercentIncrease': leasePercentIncrease,
-                //    'dueDate': dueDate
+                    'expire': leaseExpire,
+                    'percentIncrease': leasePercentIncrease,
+                    'dueDate': dueDate
                 },
-                //'deposit': {
-                //    'bank': 'China Construction Bank',
-                //    'description': 'Personal Bank Account USA'
-                //}
+                'deposit': {
+                    'bank': 'China Construction Bank',
+                    'description': 'Personal Bank Account USA'
+                }
 
 
             };
@@ -235,17 +236,21 @@ Meteor.methods({
         }
         Assets.remove({'_id': assetId});
     },
-    addPic: function (buffer, assetId) {
-        if (!Meteor.userId()) {
-            throw new Meteor.Error("not-authorized");
-        }
-        Assets.update({'_id': assetId}, {'$push': {'picture': buffer}});
-    },
-    'saveFile': function (buffer) {
-        Files.insert({data: buffer})
-    },
+    //addPic: function (buffer, assetId) {
+    //    if (!Meteor.userId()) {
+    //        throw new Meteor.Error("not-authorized");
+    //    }
+    //    Assets.update({'_id': assetId}, {'$push': {'picture': buffer}});
+    //},
+    //'saveFile': function (buffer) {
+    //    Files.insert({data: buffer})
+    //},
 
     'test': function(){
         console.log(Meteor.user());
+        //console.log(check(Meteor.user ))
+
+        Meteor.users.update({ '_id': Meteor.user()._id }, {'$set':{ 'preferences.currency': 'EUR'}}, {'multi':false});
+
     }
 })
