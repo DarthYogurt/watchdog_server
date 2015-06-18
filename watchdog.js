@@ -190,8 +190,7 @@ if (Meteor.isClient) {
             return false;
         }
 
-    })
-    ;
+    });
 
     Meteor.subscribe('assets');
 
@@ -199,7 +198,6 @@ if (Meteor.isClient) {
         passwordSignupFields: "USERNAME_AND_OPTIONAL_EMAIL"
     });
 }
-
 
 if (Meteor.isServer) {
     Meteor.startup(function () {
@@ -224,33 +222,39 @@ Meteor.methods({
             console.log(context.invalidKeys());
         });
     },
+
     assetList: function () {
         if (!Meteor.userId()) {
             throw new Meteor.Error("not-authorized");
         }
         return ( Assets.find({}));
     },
+
     assetRemove: function (assetId) {
         if (!Meteor.userId()) {
             throw new Meteor.Error("not-authorized");
         }
         Assets.remove({'_id': assetId});
     },
-    //addPic: function (buffer, assetId) {
-    //    if (!Meteor.userId()) {
-    //        throw new Meteor.Error("not-authorized");
-    //    }
-    //    Assets.update({'_id': assetId}, {'$push': {'picture': buffer}});
-    //},
-    //'saveFile': function (buffer) {
-    //    Files.insert({data: buffer})
-    //},
+
+    createFakeAsset: function()
+    {
+        var fakeUser = {
+            'name': Fake.word(),
+            'desc':{
+                "year": 2001,
+                "sqm": 676
+            }
+        }
+        return fakeUser;
+    },
 
     'test': function(){
-        console.log(Meteor.user());
+        console.log("IN TEST FUNCTION");
+        //console.log(Meteor.user());
         //console.log(check(Meteor.user ))
 
-        Meteor.users.update({ '_id': Meteor.user()._id }, {'$set':{ 'preferences.currency': 'EUR'}}, {'multi':false});
-
+        //Meteor.users.update({ '_id': Meteor.user()._id }, {'$set':{ 'preferences.currency': 'EUR'}}, {'multi':false});
+        return true;
     }
 })

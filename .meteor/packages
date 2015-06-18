@@ -13,3 +13,4 @@ accounts-facebook
 accounts-github
 cfs:standard-packages
 mike:mocha
+anti:fake
