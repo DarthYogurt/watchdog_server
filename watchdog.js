@@ -1,4 +1,5 @@
 Assets = new Mongo.Collection("assets");
+//Users = new Mongo.Collection("users");
 Files = new Mongo.Collection('files');
 
 AddressSchema = new SimpleSchema({
@@ -124,7 +125,14 @@ if (Meteor.isClient) {
     Template.body.helpers({
         assets: function () {
             return Assets.find({});
+        },
+
+        users: function() {
+            return Meteor.users.find();
         }
+        //users: function(){
+        //    return Users.find({});
+        //}
     });
 
     Template.body.events({
@@ -193,6 +201,7 @@ if (Meteor.isClient) {
     });
 
     Meteor.subscribe('assets');
+    Meteor.subscribe('users');
 
     Accounts.ui.config({
         passwordSignupFields: "USERNAME_AND_OPTIONAL_EMAIL"
@@ -206,6 +215,9 @@ if (Meteor.isServer) {
             //return Assets.find({ owner: this.userId});
         });
 
+        Meteor.publish("users", function() {
+            return Meteor.users.find();
+        });
     });
 }
 
@@ -239,6 +251,7 @@ Meteor.methods({
 
     createFakeAsset: function()
     {
+        //console.log('[Methods createFakeAsset]', Meteor.user());
         var fakeUser = {
             'name': Fake.word(),
             'desc':{
@@ -251,18 +264,20 @@ Meteor.methods({
                 }
             }
         };
+        //console.log('[Methods createFakeAsset]', fakeUser);
 
+        //Session.set( 'fakeUser', fakeUser );
         return fakeUser;
     },
 
-    loginUsername: function( username, password ) {
-        console.log( username, password );
-        Meteor.loginWithPassword(username, password);
-    },
+    //loginUsername: function( username, password ) {
+    //    console.log( username, password );
+    //    Meteor.loginWithPassword(username, password);
+    //},
 
     'test': function(){
-        console.log("IN TEST FUNCTION");
-        //console.log(Meteor.user());
+        console.log("IN TEST FUNCTION", Meteor.user());
+        Session.set('a', 'session get success');
         //console.log(check(Meteor.user ))
 
         //Meteor.users.update({ '_id': Meteor.user()._id }, {'$set':{ 'preferences.currency': 'EUR'}}, {'multi':false});
