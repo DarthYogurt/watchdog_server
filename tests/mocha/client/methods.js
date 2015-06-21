@@ -35,7 +35,6 @@ if (!(typeof MochaWeb === 'undefined')){
                 //chai.assert( fakeAsset['desc'], "Description not included");
 
                 Meteor.call('test');
-                console.log(Session.get('a'));
             });
 
             it( "create a new fake asset and put into DB", function(){

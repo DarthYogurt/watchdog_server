@@ -277,10 +277,8 @@ Meteor.methods({
 
     'test': function(){
         console.log("IN TEST FUNCTION", Meteor.user());
-        Session.set('a', 'session get success');
         //console.log(check(Meteor.user ))
 
         //Meteor.users.update({ '_id': Meteor.user()._id }, {'$set':{ 'preferences.currency': 'EUR'}}, {'multi':false});
-        return true;
     }
 })
