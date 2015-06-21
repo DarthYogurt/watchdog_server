@@ -126,13 +126,9 @@ if (Meteor.isClient) {
         assets: function () {
             return Assets.find({});
         },
-
         users: function() {
             return Meteor.users.find();
         }
-        //users: function(){
-        //    return Users.find({});
-        //}
     });
 
     Template.body.events({
@@ -231,7 +227,9 @@ Meteor.methods({
         }
         Tracker.autorun(function () {
             var context = AssetSchema.namedContext("assetAdd");
-            console.log(context.invalidKeys());
+            if(context.invalidKeys().length > 0){
+                console.log(context.invalidKeys());
+            }
         });
     },
 
@@ -251,23 +249,25 @@ Meteor.methods({
 
     createFakeAsset: function()
     {
+        if (!Meteor.userId()) {
+            throw new Meteor.Error("not-authorized");
+        }
         //console.log('[Methods createFakeAsset]', Meteor.user());
-        var fakeUser = {
+        var fakeAsset = {
             'name': Fake.word(),
             'desc':{
                 "year": 2001,
                 "sqm": 676,
-                "address": {
-                    "city": Fake.word(),
-                    "street": Fake.word(),
-                    "postal": Fake.word()
-                }
+            //    "address": {
+            //        "city": Fake.word(),
+            //        "street": Fake.word(),
+            //        "postal": Fake.word()
+            //    }
             }
         };
         //console.log('[Methods createFakeAsset]', fakeUser);
 
-        //Session.set( 'fakeUser', fakeUser );
-        return fakeUser;
+        return fakeAsset;
     },
 
     //loginUsername: function( username, password ) {

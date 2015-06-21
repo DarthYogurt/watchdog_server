@@ -48,6 +48,18 @@
         </ul>
     </form>
 </div>
+<div class="container">
+    <h1>List of Users</h1>
+
+    <form class="">
+        <ul>
+            {{#each users}}
+
+                {{> user}}
+            {{/each}}
+        </ul>
+    </form>
+</div>
 </body>
 
 <template name="asset">
@@ -59,4 +71,10 @@
 
     </li>
 
+</template>
+
+<template name="user">
+    <li>
+        {{username}}
+    </li>
 </template>
