@@ -22,7 +22,8 @@ if (!(typeof MochaWeb === 'undefined')){
 
             it( "create a new fake asset and put into DB", function(){
 
-                Meteor.call('loginUsername', USER, PASSWORD );
+                // Meteor.call('loginUsername', USER, PASSWORD );
+                // Meteor.loginWithPassword();
                 //Meteor.call('assetAdd', fakeAsset);
 
 

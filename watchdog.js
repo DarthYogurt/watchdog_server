@@ -257,11 +257,10 @@ Meteor.methods({
 
     loginUsername: function( username, password ) {
         console.log( username, password );
-        //Meteor.loginWithPassword(username, password);
+        Meteor.loginWithPassword(username, password);
     },
 
     'test': function(){
-        
         console.log("IN TEST FUNCTION");
         //console.log(Meteor.user());
         //console.log(check(Meteor.user ))
